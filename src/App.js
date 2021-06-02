@@ -9,14 +9,21 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 function App() {
     return (
         <div className="App">
+            <Navigation/>
             <Router>
                 <Switch>
                     <Route exact path="/" component={MangaList}/>
-                    <Route path="/detail/:key" component={MangaDetail}/>
+                    <Route exact path="/detail/:key" component={MangaDetail}/>
                 </Switch>
             </Router>
-            <Navigation/>
 
+            <footer className="text-muted">
+                <div className="container">
+
+                    <p>Tugas Akhir Pemograman Web Mobile © dayatfadila - 205411102</p>
+                    <p>STIMIK AKAKOM YOGYAKARTA</p>
+                </div>
+            </footer>
             <div className="modal fade" id="disclaimerleModal" tabIndex="-1" role="dialog"
                  aria-labelledby="disclaimerModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
