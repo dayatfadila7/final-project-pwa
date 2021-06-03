@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Navigation from "./Navigation";
 import MangaList from "./MangaList";
@@ -35,6 +34,9 @@ function App() {
                             </button>
                         </div>
                         <div className="modal-body">
+
+                            <p className="text-justify"> Aplikasi Ini bertujuan untuk memenuhi tugas akhir </p>
+                            <p> Pemograman Web Mobile</p>
 
                         </div>
                         <div className="modal-footer">

@@ -72,6 +72,7 @@ self.addEventListener('message', (event) => {
 
 // Any other custom service worker logic can go here.
 
+//cek untuk installasi service worker
 self.addEventListener('install', function (event) {
     console.log("SW Install");
     const asyncInstall = new Promise(function (resolve) {
@@ -81,12 +82,13 @@ self.addEventListener('install', function (event) {
     event.waitUntil(asyncInstall);
 });
 
+//cek apakah  service worker sudah aktif
 self.addEventListener('activate', function (event) {
     console.log("SW Activate");
 });
 
 
-// Add CDN.
+// Mendaftarkan file cdn jika terjadi offilne tetap bisa diakses
 registerRoute(
     ({url}) =>
         url.origin === "https://maxcdn.bootstrapcdn.com" ||
@@ -104,7 +106,7 @@ registerRoute(
     })
 );
 
-
+// Mendaftarkan main domain api  jika terjadi offilne tetap bisa diakses
 registerRoute(({url}) => url.origin.includes("kaedenoki.net"), new NetworkFirst({
         cacheName: 'apiData',
         plugins: [
@@ -115,6 +117,8 @@ registerRoute(({url}) => url.origin.includes("kaedenoki.net"), new NetworkFirst(
         ]
     })
 );
+
+// Mendaftarkan file dari domain api  jika terjadi offilne tetap bisa diakses
 
 registerRoute(({url}) => /.*\.(?:png|jpg|jpeg|svg|ico|gif)/,
     new StaleWhileRevalidate({
